@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Franchising - Clinton Oh | Business Growth & Expansion</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #ffffff;
+            padding-top: 70px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #1a365d;
+            height: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 2px 10px rgba(26, 54, 93, 0.1);
+        }
+
+        .navbar .logo {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .navbar .logo:hover {
+            color: #ff6b35;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+        }
+
+        .nav-links a.active {
+            color: #ff6b35;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ff6b35;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: #ffffff;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-image {
+            margin-top: 3rem;
+        }
+
+        .hero-image img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 3rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #2d3748;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .franchise-process {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .process-card {
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .process-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(26, 54, 93, 0.15);
+        }
+
+        .process-card .icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f56500 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: #ffffff;
+            font-weight: 700;
+        }
+
+        .process-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .process-card p {
+            color: #2d3748;
+            line-height: 1.7;
+        }
+
+        .benefits {
+            background: #ffffff;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: #e2e8f0;
+        }
+
+        .benefit-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .benefit-content h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .benefit-content p {
+            color: #2d3748;
+            font-size: 0.95rem;
+        }
+
+        .ready-section {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .ready-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .ready-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .ready-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35 0%, #f56500 100%);
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .testimonial {
+            background: #f8fafc;
+            padding: 3rem;
+            border-radius: 15px;
+            margin: 3rem auto;
+            max-width: 800px;
+            text-align: center;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-size: 4rem;
+            color: #ff6b35;
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: 700;
+        }
+
+        .testimonial p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+            padding-top: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .footer {
+            background: #2d3748;
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .process-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ready-section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .process-card {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Clinton Oh</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Clinton</a></li>
+            <li><a href="coaching.html">Coaching Programs</a></li>
+            <li><a href="franchising.html" class="active">Franchising</a></li>
+            <li><a href="mymanager.html">MyManager CRM</a></li>
+            <li><a href="mission.html">Our Mission</a></li>
+            <li><a href="blog.html">Blog & Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Get Your Business & Brand Ready for Franchising</h1>
+            <p>Transform your successful business into a scalable franchise opportunity. I'll guide you through every step of the franchising process with proven strategies that deliver results.</p>
+            <div class="hero-image">
+                <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/clinton2-1920w.png" alt="Clinton Oh Franchising Expert">
+            </div>
+        </div>
+    </section>
+
+    <section class="section franchise-process">
+        <div class="container">
+            <h2 class="section-title">My Proven Franchising Process</h2>
+            <p class="section-subtitle">I've helped dozens of businesses successfully transition to franchising. Here's my systematic approach that ensures your franchise launch is successful and profitable.</p>
+            
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="icon">1</div>
+                    <h3>Business Assessment</h3>
+                    <p>We analyze your current business model, profitability, and scalability to determine franchise readiness. I identify strengths to leverage and gaps to address before moving forward.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="icon">2</div>
+                    <h3>System Development</h3>
+                    <p>Create comprehensive operating systems, training programs, and brand standards. Every aspect of your business gets documented and standardized for consistent replication.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="icon">3</div>
+                    <h3>Legal Framework</h3>
+                    <p>Develop Franchise Disclosure Documents (FDD), franchise agreements, and ensure full legal compliance. I work with top franchise attorneys to protect your interests.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="icon">4</div>
+                    <h3>Marketing Strategy</h3>
+                    <p>Build a compelling franchise sales process with professional marketing materials, lead generation systems, and conversion strategies to attract qualified franchisees.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="icon">5</div>
+                    <h3>Launch & Support</h3>
+                    <p>Execute your franchise launch with ongoing support systems for franchisee recruitment, training, and operational excellence. Your success is my priority.</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="icon">6</div>
+                    <h3>Growth Optimization</h3>
+                    <p>Continuous improvement of your franchise system based on performance data and market feedback. Scale strategically for long-term success and profitability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section benefits">
+        <div class="container">
+            <h2 class="section-title">Why Franchising with My Guidance Works</h2>
+            <p class="section-subtitle">My franchising clients achieve exceptional results because I bring decades of entrepreneurial experience and a proven methodology.</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <div class="benefit-icon">$</div>
+                    <div class="benefit-content">
+                        <h4>Accelerated Revenue Growth</h4>
+                        <p>Generate franchise fees, royalties, and territory development income while expanding your brand nationwide.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-content">
+                        <h4>Rapid Market Expansion</h4>
+                        <p>Scale faster than company-owned locations with motivated franchisee partners investing their own capital.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-content">
+                        <h4>Proven Systems</h4>
+                        <p>Leverage my tested frameworks that have helped businesses launch successful franchise systems across multiple industries.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">🛡️</div>
+                    <div class="benefit-content">
+                        <h4>Risk Mitigation</h4>
+                        <p>Avoid costly mistakes with proper legal structure, compliance, and systems development from day one.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">👥</div>
+                    <div class="benefit-content">
+                        <h4>Expert Network</h4>
+                        <p>Access my network of franchise attorneys, consultants, and industry experts to ensure your success.</p>
+                    </div>
+                </div>
+                
+                <div class="benefit-item">
+                    <div class="benefit-icon">📈</div>
+                    <div class="benefit-content">
+                        <h4>Ongoing Support</h4>
+                        <p>Receive continued guidance as your franchise grows, with strategies for optimization and expansion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="testimonial">
+        <p>"Clinton's franchising expertise transformed our single location into a 25-unit franchise system generating over $2M annually in franchise revenue. His systematic approach and ongoing support made all the difference."</p>
+        <div class="testimonial-author">- Sarah Martinez, Franchise Owner</div>
+    </div>
+
+    <section class="section ready-section">
+        <div class="container">
+            <div class="ready-content">
+                <h2>Ready to Franchise Your Business?</h2>
+                <p>Don't navigate the complex world of franchising alone. Let me guide you through the process with proven strategies that deliver results. Your franchise success story starts with a conversation.</p>
+                <a href="contact.html" class="cta-button">Schedule Your Franchise Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Clinton Oh - Entrepreneur, Coach, Investor. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
