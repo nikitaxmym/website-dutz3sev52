@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coaching Programs - Clinton Oh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #ffffff;
+            color: #2d3748;
+            line-height: 1.6;
+            padding-top: 70px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 70px;
+            background: #1a365d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            box-shadow: 0 2px 15px rgba(26, 54, 93, 0.2);
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            padding: 8px 16px;
+            border-radius: 5px;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b35;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a.active {
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.2);
+            font-weight: 600;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: white;
+            padding: 120px 5% 80px;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, white, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-section p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff6b35, #e85a2e);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: #2d3748;
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0.8;
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(45, 55, 72, 0.15);
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(45deg, #ff6b35, #1a365d);
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(45, 55, 72, 0.25);
+            border-color: #ff6b35;
+        }
+
+        .program-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff6b35, #e85a2e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .program-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 15px;
+        }
+
+        .program-card p {
+            color: #2d3748;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .program-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .program-features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #2d3748;
+        }
+
+        .program-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        .price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 20px;
+        }
+
+        .coach-intro {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 100px 0;
+        }
+
+        .coach-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .coach-image {
+            text-align: center;
+        }
+
+        .coach-image img {
+            max-width: 400px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(45, 55, 72, 0.2);
+        }
+
+        .coach-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 25px;
+        }
+
+        .coach-text p {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .achievements {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .achievement-item {
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(26, 54, 93, 0.3);
+        }
+
+        .achievement-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ff6b35;
+            display: block;
+        }
+
+        .achievement-text {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        .testimonials {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            padding: 100px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(45, 55, 72, 0.15);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 30px;
+            font-size: 4rem;
+            color: #ff6b35;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            color: #2d3748;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .footer {
+            background: #1a365d;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-section p {
+                font-size: 1.1rem;
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .coach-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .achievements-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar {
+                padding: 0 3%;
+            }
+
+            body {
+                padding-top: 70px;
+            }
+
+            .hero-section {
+                padding: 100px 3% 60px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .container {
+                padding: 0 3%;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Clinton Oh</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Clinton</a></li>
+            <li><a href="coaching.html" class="active">Coaching Programs</a></li>
+            <li><a href="franchising.html">Franchising</a></li>
+            <li><a href="mymanager.html">MyManager CRM</a></li>
+            <li><a href="mission.html">Our Mission</a></li>
+            <li><a href="blog.html">Blog & Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Transform Your Business & Life</h1>
+            <p>Join Clinton Oh's exclusive coaching programs designed to unlock your full potential. Through proven methodologies, cutting-edge technology, and personalized guidance, we'll help you achieve unprecedented success in both business and personal growth.</p>
+            <a href="#programs" class="cta-button">Explore Programs</a>
+        </div>
+    </section>
+
+    <section class="coach-intro section">
+        <div class="container">
+            <div class="coach-content">
+                <div class="coach-image">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/clinton2-1920w.png" alt="Clinton Oh">
+                </div>
+                <div class="coach-text">
+                    <h2>Meet Your Coach</h2>
+                    <p>Clinton Oh is a seasoned entrepreneur and CEO of multiple franchise companies. Through his company, Next Level Media, he leverages modern technology to revolutionize business operations and foster growth.</p>
+                    <p>His personal coaching program, Be Aligned, blends vast experience with custom technology for unparalleled results in personal and business success. Renowned for problem-solving, Clinton's extensive network ensures success in overcoming hurdles.</p>
+                    <p>A committed philanthropist, he supports children worldwide through his nonprofit, Operation Child Rescue. Clinton's latest venture, mymanager.com, is a groundbreaking CRM and marketing tool engineered to save time and empower businesses of all sizes to achieve their goals efficiently.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Proven Track Record</h2>
+                <p>Numbers that speak to our commitment to your success</p>
+            </div>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <span class="achievement-number">500+</span>
+                    <div class="achievement-text">Businesses Transformed</div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-number">$50M+</span>
+                    <div class="achievement-text">Revenue Generated</div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-number">15+</span>
+                    <div class="achievement-text">Years Experience</div>
+                </div>
+                <div class="achievement-item">
+                    <span class="achievement-number">98%</span>
+                    <div class="achievement-text">Client Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Coaching Programs</h2>
+                <p>Choose the program that aligns with your goals and current business stage</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-icon">🚀</div>
+                    <h3>Be Aligned Foundation</h3>
+                    <p>Perfect for entrepreneurs just starting their journey or looking to establish solid foundations for growth.</p>
+                    <ul class="program-features">
+                        <li>12 weeks of intensive coaching</li>
+                        <li>Personal brand development</li>
+                        <li>Business strategy fundamentals</li>
+                        <li>Goal setting and accountability</li>
+                        <li>Access to exclusive resources</li>
+                        <li>Weekly group sessions</li>
+                    </ul>
+                    <div class="price">$2,997</div>
+                    <a href="contact.html" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">⚡</div>
+                    <h3>Be Aligned Accelerator</h3>
+                    <p>For established business owners ready to scale rapidly and overcome growth obstacles.</p>
+                    <ul class="program-features">
+                        <li>6 months of premium coaching</li>
+                        <li>Custom technology solutions</li>
+                        <li>Advanced marketing strategies</li>
+                        <li>Network access and partnerships</li>
+                        <li>Bi-weekly 1-on-1 sessions</li>
+                        <li>Priority support and resources</li>
+                    </ul>
+                    <div class="price">$9,997</div>
+                    <a href="contact.html" class="cta-button">Apply Now</a>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-icon">👑</div>
+                    <h3>Be Aligned Mastermind</h3>
+                    <p>Elite program for serious entrepreneurs committed to achieving extraordinary results and legacy building.</p>
+                    <ul class="program-features">
+                        <li>12 months of executive coaching</li>
+                        <li>Direct access to Clinton's network</li>
+                        <li>Investment opportunities</li>
+                        <li>Custom CRM implementation</li>
+                        <li>Quarterly strategy retreats</li>
+                        <li>Lifetime alumni community</li>
+                    </ul>
+                    <div class="price">$25,000</div>
+                    <a href="contact.html" class="cta-button">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Success Stories</h2>
+                <p>Hear from entrepreneurs who transformed their businesses with Clinton's guidance</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Clinton's coaching program completely transformed my approach to business. Within 6 months, I doubled my revenue and gained clarity on my long-term vision. The Be Aligned methodology is truly life-changing."
+                    </div>
+                    <div class="testimonial-author">- Sarah Mitchell, Tech Startup Founder</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The network access alone was worth the investment. Clinton connected me with key partners who helped scale my franchise to 15 locations. His problem-solving skills are unmatched."
+                    </div>
+                    <div class="testimonial-author">- Marcus Johnson, Franchise Owner</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Working with Clinton taught me to think bigger. His custom technology solutions streamlined our operations and the strategic guidance helped us secure $2M in funding."
+                    </div>
+                    <div class="testimonial-author">- Jennifer Davis, E-commerce CEO</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Clinton Oh. All rights reserved. Entrepreneur, Coach, Investor - Transforming Dreams into Reality</p>
+        </div>
+    </footer>
+</body>
+</html>
