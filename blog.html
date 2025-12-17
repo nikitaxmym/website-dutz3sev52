@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & Media - Clinton Oh</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background-color: #ffffff;
+            padding-top: 70px;
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+            box-shadow: 0 4px 20px rgba(26, 54, 93, 0.15);
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+            color: #ff6b35;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #ff6b35;
+            background: rgba(255, 107, 53, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 50%, #1a365d 100%);
+            color: #ffffff;
+            padding: 6rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/arrows-271w.png') center/cover;
+            opacity: 0.05;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #ffffff, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Featured Articles Section */
+        .featured-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #2d3748;
+            opacity: 0.8;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .featured-main {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .featured-main:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(26, 54, 93, 0.15);
+        }
+
+        .featured-main img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .featured-main-content {
+            padding: 2rem;
+        }
+
+        .featured-main h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .featured-main p {
+            color: #2d3748;
+            margin-bottom: 1.5rem;
+        }
+
+        .read-more {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff6b35, #ff8c5a);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        .featured-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .sidebar-article {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(26, 54, 93, 0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .sidebar-article:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(26, 54, 93, 0.12);
+        }
+
+        .sidebar-article h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .sidebar-article p {
+            font-size: 0.9rem;
+            color: #2d3748;
+            opacity: 0.8;
+        }
+
+        /* Blog Categories */
+        .categories-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .category-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .category-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c5a);
+        }
+
+        .category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(26, 54, 93, 0.15);
+        }
+
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b35, #ff8c5a);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.5rem;
+            color: #ffffff;
+        }
+
+        .category-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        .category-card p {
+            color: #2d3748;
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-card .btn {
+            background: transparent;
+            color: #ff6b35;
+            border: 2px solid #ff6b35;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .category-card .btn:hover {
+            background: #ff6b35;
+            color: #ffffff;
+        }
+
+        /* Media Gallery */
+        .media-section {
+            padding: 4rem 2rem;
+            background: #ffffff;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .media-card {
+            background: #ffffff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(26, 54, 93, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .media-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 50px rgba(26, 54, 93, 0.15);
+        }
+
+        .media-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .media-card-content {
+            padding: 1.5rem;
+        }
+
+        .media-card h4 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        .media-card p {
+            color: #2d3748;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Newsletter Signup */
+        .newsletter-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-content h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            background: linear-gradient(45deg, #ff6b35, #ff8c5a);
+            color: #ffffff;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: #ffffff;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.8;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="logo">Clinton Oh</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Clinton</a></li>
+            <li><a href="coaching.html">Coaching Programs</a></li>
+            <li><a href="franchising.html">Franchising</a></li>
+            <li><a href="mymanager.html">MyManager CRM</a></li>
+            <li><a href="mission.html">Our Mission</a></li>
+            <li><a href="blog.html" class="active">Blog & Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Blog & Media</h1>
+            <p>Insights, strategies, and success stories to help you transform your dreams into reality</p>
+        </div>
+    </section>
+
+    <section class="featured-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Featured Articles</h2>
+                <p>Latest insights from Clinton's entrepreneurial journey and expert coaching experience</p>
+            </div>
+            
+            <div class="featured-grid">
+                <article class="featured-main">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/clinton2-1920w.png" alt="Clinton Oh Featured Article">
+                    <div class="featured-main-content">
+                        <h3>The Power of Alignment: How to Scale Your Business While Staying True to Your Values</h3>
+                        <p>In today's fast-paced business world, many entrepreneurs lose sight of their core values in pursuit of growth. Clinton shares his proven framework for scaling businesses while maintaining authentic alignment with your mission and values. Learn the strategies that have helped multiple franchise companies achieve exponential growth without compromising their foundation.</p>
+                        <a href="#" class="read-more">Read Full Article</a>
+                    </div>
+                </article>
+                
+                <div class="featured-sidebar">
+                    <article class="sidebar-article">
+                        <h4>5 Technology Tools Every Modern Entrepreneur Needs</h4>
+                        <p>Discover the essential tech stack that Clinton and Next Level Media use to revolutionize business operations and foster growth across multiple companies.</p>
+                    </article>
+                    
+                    <article class="sidebar-article">
+                        <h4>From Dream to Franchise: A Step-by-Step Guide</h4>
+                        <p>Clinton breaks down the exact process he uses to help entrepreneurs transform their business concepts into successful franchise opportunities.</p>
+                    </article>
+                    
+                    <article class="sidebar-article">
+                        <h4>The Psychology of Success: Mindset Shifts That Matter</h4>
+                        <p>Explore the mental frameworks and belief systems that separate successful entrepreneurs from those who struggle to achieve their goals.</p>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Content Categories</h2>
+                <p>Explore our comprehensive library of business insights and strategies</p>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-icon">🚀</div>
+                    <h3>Entrepreneurship</h3>
+                    <p>Strategies for starting, scaling, and optimizing your business for maximum impact and sustainable growth.</p>
+                    <a href="#" class="btn">Explore Articles</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🎯</div>
+                    <h3>Coaching & Personal Development</h3>
+                    <p>Personal growth insights and coaching methodologies from the Be Aligned program that transform lives.</p>
+                    <a href="#" class="btn">View Content</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">🏢</div>
+                    <h3>Franchising</h3>
+                    <p>Expert guidance on franchise development, operations, and scaling successful franchise systems.</p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-icon">💼</div>
+                    <h3>Technology & CRM</h3>
+                    <p>Insights on leveraging modern technology, including MyManager CRM, to streamline business operations.</p>
+                    <a href="#" class="btn">Discover Tools</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="media-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Media Gallery</h2>
+                <p>Videos, podcasts, and visual content featuring Clinton's expertise and success stories</p>
+            </div>
+            
+            <div class="media-grid">
+                <div class="media-card">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/clinton-1920w.png" alt="Clinton Oh Speaking">
+                    <div class="media-card-content">
+                        <h4>Keynote: Transforming Dreams into Reality</h4>
+                        <p>Clinton's powerful keynote presentation on entrepreneurial success and the mindset shifts required to achieve extraordinary results.</p>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/Family-977w.jpg" alt="Success Stories">
+                    <div class="media-card-content">
+                        <h4>Success Stories: Families Transformed</h4>
+                        <p>Real stories from entrepreneurs who have used Clinton's coaching and business strategies to achieve both professional success and personal fulfillment.</p>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/nextlevelwhite-192w.png" alt="Next Level Media">
+                    <div class="media-card-content">
+                        <h4>Next Level Media: Behind the Scenes</h4>
+                        <p>An inside look at how Next Level Media leverages cutting-edge technology to revolutionize business operations across multiple industries.</p>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/co+1-192w.png" alt="Coaching Program">
+                    <div class="media-card-content">
+                        <h4>Be Aligned Program Deep Dive</h4>
+                        <p>Explore the methodology behind Clinton's signature coaching program that combines vast experience with custom technology for unparalleled results.</p>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/co+2-192w.png" alt="CRM Innovation">
+                    <div class="media-card-content">
+                        <h4>MyManager CRM: Innovation Spotlight</h4>
+                        <p>Discover how Clinton's latest venture, mymanager.com, is revolutionizing CRM and marketing tools for businesses of all sizes.</p>
+                    </div>
+                </div>
+                
+                <div class="media-card">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/arrows-190w.png" alt="Growth Strategies">
+                    <div class="media-card-content">
+                        <h4>Scaling Strategies Masterclass</h4>
+                        <p>Clinton shares his proven strategies for scaling businesses efficiently while maintaining quality and staying aligned with core values.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h2>Stay Connected</h2>
+            <p>Get the latest insights, strategies, and success stories delivered directly to your inbox. Join thousands of entrepreneurs who rely on Clinton's expertise to grow their businesses.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Clinton Oh. All rights reserved. Transforming Dreams into Reality.</p>
+        </div>
+    </footer>
+</body>
+</html>
