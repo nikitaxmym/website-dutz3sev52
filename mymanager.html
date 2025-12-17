@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyManager CRM - Clinton Oh | Transform Your Business Operations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #2d3748;
+            background-color: #ffffff;
+            line-height: 1.6;
+            padding-top: 80px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: #1a365d;
+            height: 80px;
+            box-shadow: 0 4px 20px rgba(26, 54, 93, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #ffffff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 10px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .nav-links li a.active {
+            background: #ff6b35;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            padding: 100px 0;
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #ff6b35 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #ff6b35 0%, #e55a2e 100%);
+            color: #ffffff;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .features-section {
+            padding: 100px 0;
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 20px;
+        }
+
+        .section-header p {
+            font-size: 20px;
+            color: #2d3748;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(26, 54, 93, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(26, 54, 93, 0.15);
+            border-color: #ff6b35;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #2d3748;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .demo-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
+            color: #ffffff;
+        }
+
+        .demo-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .demo-text h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .demo-text p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .demo-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .demo-features li {
+            padding: 10px 0;
+            font-size: 16px;
+            opacity: 0.9;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .demo-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
+        .demo-image {
+            text-align: center;
+        }
+
+        .demo-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .pricing-section {
+            padding: 100px 0;
+            background: #ffffff;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .pricing-card {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border-color: #ff6b35;
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2);
+        }
+
+        .pricing-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff6b35;
+            color: #ffffff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .pricing-card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 50px rgba(26, 54, 93, 0.15);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a365d;
+            margin-bottom: 20px;
+        }
+
+        .pricing-card .price {
+            font-size: 48px;
+            font-weight: 800;
+            color: #ff6b35;
+            margin-bottom: 10px;
+        }
+
+        .pricing-card .period {
+            color: #2d3748;
+            opacity: 0.7;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 8px 0;
+            color: #2d3748;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: 700;
+        }
+
+        .pricing-button {
+            display: block;
+            width: 100%;
+            background: linear-gradient(135deg, #ff6b35 0%, #e55a2e 100%);
+            color: #ffffff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .pricing-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .testimonials-section {
+            padding: 100px 0;
+            background: #f7fafc;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .testimonial-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(26, 54, 93, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(26, 54, 93, 0.15);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            font-style: italic;
+            color: #2d3748;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            color: #1a365d;
+        }
+
+        .testimonial-title {
+            font-size: 14px;
+            color: #ff6b35;
+            opacity: 0.8;
+        }
+
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #e55a2e 100%);
+            text-align: center;
+            color: #ffffff;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-primary {
+            background: #ffffff;
+            color: #ff6b35;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 255, 255, 0.3);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: #ffffff;
+            padding: 18px 40px;
+            border: 2px solid #ffffff;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-secondary:hover {
+            background: #ffffff;
+            color: #ff6b35;
+            transform: translateY(-3px);
+        }
+
+        .footer {
+            background: #1a365d;
+            color: #ffffff;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #ffffff;
+            opacity: 0.8;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+            color: #ff6b35;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.8;
+        }
+
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-container {
+                padding: 0 15px;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #1a365d;
+                flex-direction: column;
+                padding: 20px;
+                gap: 10px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content p {
+                font-size: 18px;
+            }
+
+            .section-header h2 {
+                font-size: 32px;
+            }
+
+            .demo-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .demo-text h2 {
+                font-size: 32px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-section h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="logo">Clinton Oh</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Clinton</a></li>
+                <li><a href="coaching.html">Coaching Programs</a></li>
+                <li><a href="franchising.html">Franchising</a></li>
+                <li><a href="mymanager.html" class="active">MyManager CRM</a></li>
+                <li><a href="mission.html">Our Mission</a></li>
+                <li><a href="blog.html">Blog & Media</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-toggle">☰</button>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>MyManager CRM</h1>
+            <p>The groundbreaking CRM and marketing tool engineered to save time and empower businesses of all sizes to achieve their goals efficiently</p>
+            <a href="#demo" class="cta-button">Start Free Trial</a>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Revolutionize Your Business Operations</h2>
+                <p>MyManager CRM leverages cutting-edge technology to streamline your workflow and accelerate growth</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Customer Relationship Management</h3>
+                    <p>Centralize all customer interactions, track leads, manage contacts, and nurture relationships with our intuitive CRM system designed for modern businesses.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Marketing Automation</h3>
+                    <p>Create targeted campaigns, automate email sequences, and track performance with advanced analytics to maximize your marketing ROI and conversion rates.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Sales Pipeline Management</h3>
+                    <p>Visualize your entire sales process, track deals, forecast revenue, and identify bottlenecks to accelerate your sales cycle and close more deals.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Advanced Analytics & Reporting</h3>
+                    <p>Make data-driven decisions with comprehensive reports, real-time dashboards, and actionable insights that reveal what's working and what needs improvement.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Task & Project Management</h3>
+                    <p>Organize teams, assign tasks, set deadlines, and track progress with integrated project management tools that keep everyone aligned and productive.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Mobile Accessibility</h3>
+                    <p>Access your CRM anywhere, anytime with our mobile-optimized platform that keeps you connected to your business on desktop, tablet, and smartphone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="demo" class="demo-section">
+        <div class="container">
+            <div class="demo-content">
+                <div class="demo-text">
+                    <h2>Built by Entrepreneurs, For Entrepreneurs</h2>
+                    <p>Clinton Oh's extensive experience as a CEO of multiple franchise companies and his deep understanding of modern business challenges drove the creation of MyManager CRM. This isn't just another software tool – it's a comprehensive business transformation platform.</p>
+                    <ul class="demo-features">
+                        <li>Seamlessly integrates with existing business processes</li>
+                        <li>Scales with your business from startup to enterprise</li>
+                        <li>Reduces administrative overhead by up to 60%</li>
+                        <li>Increases lead conversion rates by 35% on average</li>
+                        <li>Provides 24/7 customer support and onboarding assistance</li>
+                        <li>Offers custom integrations with popular business tools</li>
+                    </ul>
+                    <a href="#pricing" class="cta-button">View Pricing Plans</a>
+                </div>
+                <div class="demo-image">
+                    <img src="https://lirp.cdn-website.com/7e69d783/dms3rep/multi/opt/clinton2-1920w.png" alt="Clinton Oh - MyManager CRM Founder">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Success Plan</h2>
+                <p>Flexible pricing options designed to grow with your business needs and budget</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$29</div>
+                    <div class="period">per user/month</div>
+                    <ul class="pricing-features">
+                        <li>Up to 1,000 contacts</li>
+                        <li>Basic CRM functionality</li>
+                        <li>Email marketing (5,000 emails/month)</li>
+                        <li>Mobile app access</li>
+                        <li>Standard support</li>
+                        <li>Basic reporting</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Start Free Trial</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>Professional</h3>
+                    <div class="price">$79</div>
+                    <div class="period">per user/month</div>
+                    <ul class="pricing-features">
+                        <li>Up to 10,000 contacts</li>
+                        <li>Advanced CRM features</li>
+                        <li>Marketing automation</li>
+                        <li>Sales pipeline management</li>
+                        <li>Priority support</li>
+                        <li>Advanced analytics</li>
+                        <li>Custom integrations</li>
+                        <li>Team collaboration tools</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Start Free Trial</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Enterprise</h3>
+                    <div class="price">$149</div>
+                    <div class="period">per user/month</div>
+                    <ul class="pricing-features">
+                        <li>Unlimited contacts</li>
+                        <li>Full platform access</li>
+                        <li>White-label options</li>
+                        <li>Custom development</li>
+                        <li>Dedicated account manager</li>
+                        <li>Advanced security features</li>
+                        <li>Custom training sessions</li>
+                        <li>API access</li>
+                    </ul>
+                    <a href="#" class="pricing-button">Contact Sales</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories from Real Businesses</h2>
+                <p>Discover how MyManager CRM is transforming businesses across industries</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"MyManager CRM completely transformed our lead management process. We've seen a 45% increase in conversions and our team is more organized than ever. Clinton's vision for this platform is exactly what growing businesses need."</div>
+                    <div class="testimonial-author">Sarah Mitchell</div>
+                    <div class="testimonial-title">CEO, Digital Growth Solutions</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"As a franchise owner, I needed a system that could handle multiple locations. MyManager CRM's scalability and reporting features have been game-changing for our operations. The ROI was evident within the first month."</div>
+                    <div class="testimonial-author">Marcus Rodriguez</div>
+                    <div class="testimonial-title">Multi-Unit Franchise Owner</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">"The automation features have saved our team over 20 hours per week. We can now focus on high-value activities instead of manual data entry. Plus, the mobile app keeps us connected even when we're in the field."</div>
+                    <div class="testimonial-author">Jennifer Lee</div>
+                    <div class="testimonial-title">Sales Director, TechStart Inc.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Join thousands of successful businesses using MyManager CRM to accelerate growth and streamline operations</p>
+            <div class="cta-buttons">
+                <a href="#" class="cta-primary">Start Your Free Trial</a>
+                <a href="#" class="cta-secondary">Schedule a Demo</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>MyManager CRM</h3>
+                    <p>Engineered by Clinton Oh and his team at Next Level Media, MyManager CRM represents the future of business automation and customer relationship management.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="index.html">Home</a></p>
+                    <p><a href="about.html">About Clinton</a></p>
+                    <p><a href="coaching.html">Coaching Programs</a></p>
+                    <p><a href="contact.html">Contact Us</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Support</h3>
+                    <p><a href="#">Help Center</a></p>
+                    <p><a href="#">Documentation</a></p>
+                    <p><a href="#">Training Resources</a></p>
+                    <p><a href="#">API Documentation</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect</h3>
+                    <p><a href="#">LinkedIn</a></p>
+                    <p><a href="#">Twitter</a></p>
+                    <p><a href="blog.html">Blog & Media</a></p>
+                    <p><a href="#">Webinars</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Clinton Oh - MyManager CRM. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
